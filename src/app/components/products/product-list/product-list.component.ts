@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product';
+import { MessagesService } from 'src/app/services/messages.service';
 
 @Component({
   selector: 'app-product-list',
@@ -10,7 +11,8 @@ import { Product } from 'src/app/models/product';
 export class ProductListComponent implements OnInit {
   productsList: Product[];
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private _messagesService: MessagesService
   ) { }
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class ProductListComponent implements OnInit {
 
   onDelete($key: string){
     this.productService.deleteProduct($key);
+    this._messagesService.mensaje_generico('msj-ng', 'success', 'Aviso', 'Producto Creado.')
   }
 
 }

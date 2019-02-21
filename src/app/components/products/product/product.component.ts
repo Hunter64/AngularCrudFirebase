@@ -13,7 +13,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private _messagesEvents: MessagesService,
+    private _messagesService: MessagesService,
   ) { }
 
   ngOnInit() {
@@ -25,11 +25,12 @@ export class ProductComponent implements OnInit {
     console.log(productForm.value)
     if(productForm.value.$key == null){
       this.productService.insertProduct(productForm.value)
-      this._messagesEvents.mensaje_generico('creado', 'error', 'Aviso', 'Producto Creado.');
+      this._messagesService.mensaje_generico('msj-ng', 'success', 'Aviso', 'Producto Creado.')
     }
     
     else{
       this.productService.updateProduct(productForm.value)
+      this._messagesService.mensaje_generico('msj-ng', 'success', 'Aviso', 'Producto Actualizado.')
     }
     
     this.resetForm(productForm)
