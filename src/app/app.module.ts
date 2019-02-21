@@ -12,7 +12,11 @@ import { ProductListComponent } from './components/products/product-list/product
 import { ProductComponent } from './components/products/product/product.component';
 import { ProductService } from './services/product.service';
 import { FormsModule } from '@angular/forms'
-
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,9 +30,14 @@ import { FormsModule } from '@angular/forms'
     AppRoutingModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
-    FormsModule
+    FormsModule,
+    ToastModule,
+    MessagesModule,
+    MessageModule,
+    BrowserModule,
+    BrowserAnimationsModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
