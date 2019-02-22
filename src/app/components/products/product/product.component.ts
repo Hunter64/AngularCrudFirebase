@@ -25,12 +25,12 @@ export class ProductComponent implements OnInit {
     console.log(productForm.value)
     if(productForm.value.$key == null){
       this.productService.insertProduct(productForm.value)
-      this._messagesService.mensaje_generico('msj-ng', 'success', 'Aviso', 'Producto Creado.')
+      this._messagesService.mensaje_generico('msj-ng-in-product', 'success', 'Aviso', 'Producto Creado.')
     }
     
     else{
       this.productService.updateProduct(productForm.value)
-      this._messagesService.mensaje_generico('msj-ng', 'success', 'Aviso', 'Producto Actualizado.')
+      this._messagesService.mensaje_generico('msj-ng-in-product', 'success', 'Aviso', 'Producto Actualizado.')
     }
     
     this.resetForm(productForm)

@@ -35,7 +35,7 @@ export class ProductListComponent implements OnInit {
 
   onDelete($key: string){
     this.productService.deleteProduct($key);
-    this._messagesService.mensaje_generico('msj-ng', 'success', 'Aviso', 'Producto Creado.')
+    this._messagesService.mensaje_generico('msj-ng-in-product-list', 'success', 'Aviso', 'Producto Eliminado.')
   }
 
 }
