@@ -10,6 +10,7 @@ import { MessagesService } from 'src/app/services/messages.service';
 })
 export class ProductListComponent implements OnInit {
   productsList: Product[];
+  public key: string;
   constructor(
     private productService: ProductService,
     private _messagesService: MessagesService
@@ -34,8 +35,20 @@ export class ProductListComponent implements OnInit {
   }
 
   onDelete($key: string){
-    this.productService.deleteProduct($key);
+    this.key = $key;
+    this._messagesService.confirmacion_eliminacion('Registro')
+    //this.productService.deleteProduct($key);
+    //this._messagesService.mensaje_generico('msj-ng-in-product-list', 'success', 'Aviso', 'Producto Eliminado.')
+  }
+
+  confirmacion(){
+    this.productService.deleteProduct(this.key);
+    this._messagesService.clear('msj-ng-in-product-list-confirmation')
     this._messagesService.mensaje_generico('msj-ng-in-product-list', 'success', 'Aviso', 'Producto Eliminado.')
+  }
+
+  negacion() {
+    this._messagesService.clear('msj-ng-in-product-list-confirmation')
   }
 
 }
